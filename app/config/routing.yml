@@ -1,0 +1,5 @@
+udes_prueba:
+    resource: "@UdesPruebaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

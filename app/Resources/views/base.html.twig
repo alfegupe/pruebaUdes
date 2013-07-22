@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Users - Udes {% endblock %}</title>
+        {% block stylesheets %}
+			<link rel="styleSheet" href="{{ asset('bundles/udesprueba/css/bootstrap.min.css') }}" />
+		{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+			<script src="{{ asset('bundles/udesprueba/js/bootstrap.min.js') }}" > </script>
+			<script src="{{ asset('bundles/udesprueba/js/jquery-1.10.2.min.js') }}" > </script>
+		{% endblock %}
+    </body>
+</html>

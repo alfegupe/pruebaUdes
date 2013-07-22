@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+</br></br></br>
+
+<div class="row">
+
+<div class="span1"> </div>
+
+  <div class="span3"> 
+<h1>Users</h1>
+
+ 
+
+{{ form_rest(form) }}
+
+	<form action="{{ path('user') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </p>
+    </form>
+
+	</div>
+
+  <div class="span8">
+
+   <p class="text-right"> 
+	<form class="form-search text-right">
+  <div class="input-prepend">
+    <button type="submit" class="btn">Search</button>
+    <input type="text" class="span2 search-query" placeholder="Buscar...">
+  </div>
+</form></p>
+
+
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.code }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+               			<a href="{{ path('user_show', { 'id': entity.id }) }}"> <i class="icon-search"></i> </a>
+                        	<a href="{{ path('user_edit', { 'id': entity.id }) }}"> <i class="icon-edit"></i> </a>
+				<a href="{{ path('user_delete', { 'id': entity.id }) }}"> <i class="icon-remove"></i> </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<a class="btn btn-primary" href="{{ path('user_new') }}">
+                Nuevo
+            </a>
+
+</div>
+</div>
+    {% endblock %}
+
